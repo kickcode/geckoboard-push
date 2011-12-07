@@ -1,0 +1,70 @@
+= geckoboard-push
+
+* http://github.com/kickcode/geckoboard-push
+
+== DESCRIPTION:
+
+This is a Ruby library allowing you to push updates to Geckoboard widgets.
+
+== FEATURES:
+
+Exposes a Geckoboard::Push class allowing updates for the following widget types:
+
+* number and secondary value
+* text
+* RAG
+* line chart
+* pie chart
+* geckometer
+* funnel chart
+
+== SYNOPSIS:
+
+Simply add to your Gemfile as follows:
+
+  gem 'geckoboard-push'
+
+Then run "bundle install" and once installed, you need to configure the API key for your Geckoboard account:
+
+  Geckoboard::Push.api_key = "my_api_key"
+
+Once that's done, you can push updates to widgets as so:
+
+  Geckoboard::Push.new("my_widget_key").number_and_secondary_value(100, 10)
+
+== REQUIREMENTS:
+
+geckoboard-push depends upon httparty.
+
+== INSTALL:
+
+It's best to add it to the Gemfile for your app, but if needed you can install the gem manually:
+
+  gem install geckoboard-push
+
+== CONTRIBUTORS:
+
+Elliott Draper
+
+== LICENSE:
+
+Copyright 2011 Elliott Draper <el@kickcode.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
