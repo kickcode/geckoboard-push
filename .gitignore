@@ -2,4 +2,3 @@
 .bundle
 pkg
 rdoc
-*.gemspec
