@@ -1,5 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'httparty'
-gem 'fakeweb'
-gem 'mocha'
+# Gem dependencies in geckoboard-push.gemspec
+gemspec
+
+group :development, :test do
+  gem 'rake'
+  gem 'rdoc'
+end
