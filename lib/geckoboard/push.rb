@@ -93,5 +93,15 @@ module Geckoboard
       opts[:percentage] = "hide" if hide_percentage
       self.push(opts)
     end
+
+    # Items should be an array of hashes. These are passed verabit to the Map API
+    # check http://docs.geckoboard.com/custom-widgets/map.html for possible
+    # examples
+    def map(items)
+      data = items.collect do |item|
+        {:point => item }
+      end
+      self.push(:points => data)
+    end
   end
 end

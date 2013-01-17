@@ -42,12 +42,12 @@ class PushTest < Test::Unit::TestCase
 
   def test_rag
     expect_http_request({"api_key" => "12345", "data" => {"item" => [{"value" => 1}, {"value" => 2}, {"value" => 3}]}}.to_json)
-    assert_equal true, @push.rag(1,2,3)
+    assert_equal true, @push.rag(1, 2, 3)
   end
 
   def test_line
-    expect_http_request({"api_key" => "12345", "data" => {"item" => [1,2,3], "settings" => {"axisx" => "x axis", "axisy" => "y axis", "colour" => "ff9900"}}}.to_json)
-    assert_equal true, @push.line([1,2,3], "ff9900", "x axis", "y axis")
+    expect_http_request({"api_key" => "12345", "data" => {"item" => [1, 2, 3], "settings" => {"axisx" => "x axis", "axisy" => "y axis", "colour" => "ff9900"}}}.to_json)
+    assert_equal true, @push.line([1, 2, 3], "ff9900", "x axis", "y axis")
   end
 
   def test_pie
@@ -63,6 +63,11 @@ class PushTest < Test::Unit::TestCase
   def test_funnel
     expect_http_request({"api_key" => "12345", "data" => {"item" => [{"value" => 5, "label" => "Test1"}, {"value" => 10, "label" => "Test2"}], "type" => "reverse", "percentage" => "hide"}}.to_json)
     assert_equal true, @push.funnel([{:label => "Test1", :value => 5}, {:label => "Test2", :value => 10}], true, true)
+  end
+
+  def test_map
+    expect_http_request({"api_key" => "12345", "data" => {"points" => [{"point" => { "city" => { "city_name" => "London", "country_code" => "GB"}}}]}}.to_json)
+    assert_equal true, @push.map(["city" => { "city_name" => "London", "country_code" => "GB" }])
   end
 
   def expect_http_request(json)
