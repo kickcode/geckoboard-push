@@ -98,10 +98,7 @@ module Geckoboard
     # check http://docs.geckoboard.com/custom-widgets/map.html for possible
     # examples
     def map(items)
-      data = items.collect do |item|
-        {:point => item }
-      end
-      self.push(:points => data)
+      self.push(:points => { :point => items})
     end
   end
 end

@@ -66,7 +66,7 @@ class PushTest < Test::Unit::TestCase
   end
 
   def test_map
-    expect_http_request({"api_key" => "12345", "data" => {"points" => [{"point" => { "city" => { "city_name" => "London", "country_code" => "GB"}}}]}}.to_json)
+    expect_http_request({"api_key" => "12345", "data" => {"points" => {"point" => [{ "city" => { "city_name" => "London", "country_code" => "GB"}}]}}}.to_json)
     assert_equal true, @push.map(["city" => { "city_name" => "London", "country_code" => "GB" }])
   end
 
