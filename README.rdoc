@@ -17,6 +17,7 @@ Exposes a Geckoboard::Push class allowing updates for the following widget types
 * pie chart
 * geckometer
 * funnel chart
+* map
 
 == SYNOPSIS:
 
