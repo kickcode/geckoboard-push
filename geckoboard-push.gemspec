@@ -25,12 +25,12 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<fakeweb>, ["~> 1.3.0"])
       s.add_development_dependency(%q<mocha>, ["~> 0.10.0"])
     else
-      s.add_dependency(%q<httparty>, ["~> 0.8.1"])
+      s.add_dependency(%q<httparty>, ["~> 0.9.0"])
       s.add_dependency(%q<fakeweb>, ["~> 1.3.0"])
       s.add_dependency(%q<mocha>, ["~> 0.10.0"])
     end
   else
-    s.add_dependency(%q<httparty>, ["~> 0.8.1"])
+    s.add_dependency(%q<httparty>, ["~> 0.9.0"])
     s.add_dependency(%q<fakeweb>, ["~> 1.3.0"])
     s.add_dependency(%q<mocha>, ["~> 0.10.0"])
   end
