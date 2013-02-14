@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<httparty>, ["~> 0.8.1"])
+      s.add_runtime_dependency(%q<httparty>, ["~> 0.9.0"])
       s.add_development_dependency(%q<fakeweb>, ["~> 1.3.0"])
       s.add_development_dependency(%q<mocha>, ["~> 0.10.0"])
     else
