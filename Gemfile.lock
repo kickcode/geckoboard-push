@@ -27,7 +27,6 @@ PLATFORMS
 DEPENDENCIES
   fakeweb (~> 1.3.0)
   geckoboard-push!
-  httparty (~> 0.8.1)
   mocha (~> 0.10.0)
   rake
   rdoc
