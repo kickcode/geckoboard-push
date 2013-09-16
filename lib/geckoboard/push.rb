@@ -95,11 +95,11 @@ module Geckoboard
     end
 
     # Values should be an array of hashes of the format {name: "some label", [10.0, 3, 8, ...]}
-    # Colour, x_axis and y_axis are optional settings
-    def highchart(values, colour = nil, x_axis = nil, y_axis = nil)
+    # Options are an optional hash with all the available highchart options
+    def highchart(values, options)
       self.push({"highchart" => {
           chart: {renderTo: 'container'}, credits: {enabled: false}, series: values
-      }})
+      }.merge(options)})
     end
   end
 end
