@@ -17,6 +17,7 @@ Exposes a Geckoboard::Push class allowing updates for the following widget types
 * pie chart
 * geckometer
 * funnel chart
+* highcharts
 
 == SYNOPSIS:
 
@@ -45,6 +46,7 @@ It's best to add it to the Gemfile for your app, but if needed you can install t
 == CONTRIBUTORS:
 
 Elliott Draper
+Martin Naumann
 
 == LICENSE:
 

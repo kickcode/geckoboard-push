@@ -93,5 +93,13 @@ module Geckoboard
       opts[:percentage] = "hide" if hide_percentage
       self.push(opts)
     end
+
+    # Values should be an array of hashes of the format {name: "some label", [10.0, 3, 8, ...]}
+    # Options are an optional hash with all the available highchart options
+    def highchart(values, options)
+      self.push({"highchart" => {
+          chart: {renderTo: 'container'}, credits: {enabled: false}, series: values
+      }.merge(options)})
+    end
   end
 end

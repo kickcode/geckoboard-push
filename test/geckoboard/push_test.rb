@@ -65,6 +65,13 @@ class PushTest < Test::Unit::TestCase
     assert_equal true, @push.funnel([{:label => "Test1", :value => 5}, {:label => "Test2", :value => 10}], true, true)
   end
 
+  def test_highcharts
+
+    expect_http_request({"api_key" => "12345", "data" => {"highchart" => { "chart" => {renderTo: 'container'}, credits: {enabled: false}, series: [{name: 'ABC', data: [1,2,3]}, {name: 'DEF', data: [4,5,6]}], yAxis: { title: {text: "LABEL"} }}}}.to_json)
+    assert_equal true, @push.highchart([{name: 'ABC', data: [1,2,3]}, {name: 'DEF', data: [4,5,6]}], {yAxis: {title: {text: "LABEL"}} })
+  end
+
+
   def expect_http_request(json)
     response = Net::HTTPOK.new("1.1", 200, "OK")
     response.instance_variable_set(:@body, '{"success":true}')
