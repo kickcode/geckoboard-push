@@ -13,7 +13,7 @@ GEM
       multi_xml (>= 0.5.2)
     json (1.8.1)
     metaclass (0.0.4)
-    mocha (1.0.0)
+    mocha (0.10.0)
       metaclass (~> 0.0.1)
     multi_xml (0.5.5)
     rake (10.1.1)
@@ -26,6 +26,6 @@ PLATFORMS
 DEPENDENCIES
   fakeweb
   geckoboard-push!
-  mocha
+  mocha (~> 0.10.0)
   rake
   rdoc
