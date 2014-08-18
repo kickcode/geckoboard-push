@@ -1,11 +1,12 @@
-require 'test/unit'
+require 'minitest/autorun'
 gem 'fakeweb'
 require 'fakeweb'
 gem 'mocha'
-require 'mocha/setup'
+require 'minitest/unit'
+require 'mocha/mini_test'
 require File.join(File.expand_path(File.dirname(__FILE__)), "..", "..", "lib", "geckoboard", "push")
 
-class PushTest < Test::Unit::TestCase
+class PushTest < MiniTest::Unit::TestCase
   def setup
     FakeWeb.allow_net_connect = false
     @api_key = "12345"
@@ -13,7 +14,7 @@ class PushTest < Test::Unit::TestCase
   end
 
   def test_with_no_api_key
-    assert_raise Geckoboard::Push::Error do
+    assert_raises Geckoboard::Push::Error do
       Geckoboard::Push.new(nil, @widget_key).number_and_secondary_value(100, 10)
     end
   end
@@ -23,7 +24,7 @@ class PushTest < Test::Unit::TestCase
     response.instance_variable_set(:@body, '{"success":false,"error":"Api key has wrong format. "}')
     response.instance_variable_set(:@read, true)
     Net::HTTP.any_instance.expects(:request).returns(response)
-    assert_raise Geckoboard::Push::Error do
+    assert_raises Geckoboard::Push::Error do
       Geckoboard::Push.new("invalid", @widget_key).number_and_secondary_value(100, 10)
     end
   end
