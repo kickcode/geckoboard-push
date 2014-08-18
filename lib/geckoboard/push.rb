@@ -4,11 +4,9 @@ require 'json'
 
 module Geckoboard
   class Push
-    class << self
-      # API configuration
-      attr_accessor :api_key
-      attr_accessor :api_version
-    end
+    # API configuration
+    attr_accessor :api_key
+    attr_accessor :api_version
 
     # Custom error type for handling API errors
     class Error < Exception; end
@@ -17,14 +15,15 @@ module Geckoboard
     base_uri 'https://push.geckoboard.com'
 
     # Initializes the push object for a specific widget
-    def initialize(widget_key)
+    def initialize(api_key, widget_key)
+      @api_key = api_key
       @widget_key = widget_key
     end
 
     # Makes a call to Geckoboard to push data to the current widget
     def push(data)
-      raise Geckoboard::Push::Error.new("Api key not configured.") if Geckoboard::Push.api_key.nil? || Geckoboard::Push.api_key.empty?
-      result = JSON.parse(self.class.post("/#{Geckoboard::Push.api_version || 'v1'}/send/#{@widget_key}", {:body => {:api_key => Geckoboard::Push.api_key, :data => data}.to_json}))
+      raise Geckoboard::Push::Error.new("Api key not configured.") if @api_key.nil? || @api_key.empty?
+      result = JSON.parse(self.class.post("/#{@api_version || 'v1'}/send/#{@widget_key}", {:body => {:api_key => @api_key, :data => data}.to_json}).body)
       raise Geckoboard::Push::Error.new(result["error"]) unless result["success"]
       result["success"]
     end

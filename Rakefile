@@ -4,7 +4,7 @@ require "rdoc/task"
 
 require "rake/testtask"
 Rake::TestTask.new do |t|
-  t.libs << "test"
+  t.libs << "minitest"
   t.test_files = FileList["test/**/*_test.rb"]
   t.verbose = true
 end
@@ -30,7 +30,7 @@ spec = Gem::Specification.new do |s|
   s.add_dependency "httparty", "~> 0.8.1"
 
   s.add_development_dependency "fakeweb", "~> 1.3.0"
-  s.add_development_dependency "mocha", "~> 0.10.0"
+  s.add_development_dependency "mocha", "~> 1.1.0"
 end
 
 Gem::PackageTask.new(spec) do |pkg|
