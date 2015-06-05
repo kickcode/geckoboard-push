@@ -24,7 +24,7 @@ module Geckoboard
     # Makes a call to Geckoboard to push data to the current widget
     def push(data)
       raise Geckoboard::Push::Error.new("Api key not configured.") if Geckoboard::Push.api_key.nil? || Geckoboard::Push.api_key.empty?
-      result = JSON.parse(self.class.post("/#{Geckoboard::Push.api_version || 'v1'}/send/#{@widget_key}", {:body => {:api_key => Geckoboard::Push.api_key, :data => data}.to_json}))
+      result = JSON.parse(self.class.post("/#{Geckoboard::Push.api_version || 'v1'}/send/#{@widget_key}", {:body => {:api_key => Geckoboard::Push.api_key, :data => data}.to_json}).body)
       raise Geckoboard::Push::Error.new(result["error"]) unless result["success"]
       result["success"]
     end
