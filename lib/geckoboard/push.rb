@@ -93,5 +93,19 @@ module Geckoboard
       opts[:percentage] = "hide" if hide_percentage
       self.push(opts)
     end
+
+    # Items should be an array of hashes, each hash containing:
+    # - value (numeric value)
+    # - label (optional)
+    # - previous_rank (optional)
+    def leaderboard(items)
+      data = items.collect do |item|
+        d = {:value => item[:value], :label => item[:label]}
+        d[:previous_rank] = item[:previous_rank] if item.include?(:previous_rank)
+        d
+      end
+      opts = {:items => data}
+      self.push(opts)
+    end
   end
 end
