@@ -65,6 +65,11 @@ class PushTest < Test::Unit::TestCase
     assert_equal true, @push.funnel([{:label => "Test1", :value => 5}, {:label => "Test2", :value => 10}], true, true)
   end
 
+  def test_leaderboard
+    expect_http_request({"api_key" => "12345", "data" => {"items" => [{"value" => 5, "label" => "Test1"}, {"value" => 10, "label" => "Test2", "previous_rank" => "2"}]}}.to_json)
+    assert_equal true, @push.leaderboard([{:label => "Test1", :value => 5}, {:label => "Test2", :value => 10, :previous_rank => 2}])
+  end
+
   def expect_http_request(json)
     response = Net::HTTPOK.new("1.1", 200, "OK")
     response.instance_variable_set(:@body, '{"success":true}')
