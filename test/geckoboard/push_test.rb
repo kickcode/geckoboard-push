@@ -66,7 +66,7 @@ class PushTest < Test::Unit::TestCase
   end
 
   def test_leaderboard
-    expect_http_request({"api_key" => "12345", "data" => {"item" => [{"value" => 5, "label" => "Test1"}, {"value" => 10, "label" => "Test2", "previous_rank" => "2"}]}}.to_json)
+    expect_http_request({"api_key" => "12345", "data" => {"items" => [{"value" => 5, "label" => "Test1"}, {"value" => 10, "label" => "Test2", "previous_rank" => "2"}]}}.to_json)
     assert_equal true, @push.leaderboard([{:label => "Test1", :value => 5}, {:label => "Test2", :value => 10, :previous_rank => 2}])
   end
 
