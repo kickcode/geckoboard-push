@@ -1,4 +1,5 @@
 .rvmrc
 .bundle
+.ruby-version
 pkg
 rdoc

@@ -21,10 +21,20 @@ class PushTest < MiniTest::Unit::TestCase
 
   def test_invalid_key
     response = Net::HTTPOK.new("1.1", 200, "OK")
-    response.instance_variable_set(:@body, '{"success":false,"error":"Api key has wrong format. "}')
+    response.instance_variable_set(:@body, '{"success":false,"error":"Api key has wrong format."}')
     response.instance_variable_set(:@read, true)
     Net::HTTP.any_instance.expects(:request).returns(response)
-    assert_raises Geckoboard::Push::Error do
+    assert_raises(Geckoboard::Push::Error, "Api key has wrong format.") do
+      Geckoboard::Push.new("invalid", @widget_key).number_and_secondary_value(100, 10)
+    end
+  end
+
+  def test_invalid_api_key_with_new_error_location
+    response = Net::HTTPOK.new("1.1", 401, "Unauthorized")
+    response.instance_variable_set(:@body, '{"message":"Your API key is invalid"}')
+    response.instance_variable_set(:@read, true)
+    Net::HTTP.any_instance.expects(:request).returns(response)
+    assert_raises(Geckoboard::Push::Error, "Your API key is invalid") do
       Geckoboard::Push.new("invalid", @widget_key).number_and_secondary_value(100, 10)
     end
   end
